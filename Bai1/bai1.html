@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Đăng Nhập Tình Yêu</title>
+    <link rel="stylesheet" href="bai1.css">
+</head>
+<body>
+    <div id="heart-container"></div>
+
+    <div class="login-container">
+        <form class="login-form">
+            <h2>Đăng nhập</h2>
+            
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Tài khoản">
+            </div>
+            
+            <div class="input-group" style="position: relative;">
+                <input type="password" id="password" placeholder="Mật khẩu" 
+                       onfocus="showHint()" onblur="hideHint()">
+                <div id="password-hint" class="hint-cloud">
+                    Gợi ý: 12032006 ☁️
+                </div>
+            </div>
+            
+            <div class="checkbox-group">
+                <input type="checkbox" id="remember">
+                <label for="remember">Nhớ mật khẩu</label>
+            </div>
+            
+            <button type="button" onclick="xuLyDangNhap()">Đăng nhập</button>
+        </form>
+    </div>
+
+<script>
+    // Hàm hiện/ẩn đám mây gợi ý
+    function showHint() {
+        const hint = document.getElementById("password-hint");
+        hint.style.opacity = "1";
+        hint.style.visibility = "visible";
+    }
+
+    function hideHint() {
+        const hint = document.getElementById("password-hint");
+        hint.style.opacity = "0";
+        hint.style.visibility = "hidden";
+    }
+
+    // Hàm xử lý đăng nhập và chuyển hướng
+    function xuLyDangNhap() {
+        var ten = document.getElementById("username").value;
+        var mk = document.getElementById("password").value;
+
+        if (ten === "sang" && mk === "12032006") {
+            alert("Đăng nhập thành công! Đang chuyển đến món quà...");
+            window.location.href = "https://sangle06.github.io/happy-birthday-my-love/"; 
+        } else {
+            alert("Sai tài khoản hoặc mật khẩu rồi Diễm ơi!");
+        }
+    }
+
+    // Tạo hiệu ứng trái tim bay ngẫu nhiên
+    function createHeart() {
+        const container = document.getElementById('heart-container');
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+        container.appendChild(heart);
+        
+        setTimeout(() => { heart.remove(); }, 5000);
+    }
+    setInterval(createHeart, 500);
+</script>
+</body>
+</html>
